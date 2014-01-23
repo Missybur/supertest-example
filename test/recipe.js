@@ -37,6 +37,8 @@ describe('Recipe API', function() {
         .expect('Content-Type', /json/)
         .expect(200)
         .end(function(err, res) {
+          if (err)
+            return done(err);
           var result = JSON.parse(res.text)[0];
           assert.equal(result._id, id);
           assert.equal(recipe.title, result.title);
@@ -58,6 +60,8 @@ describe('Recipe API', function() {
         .expect('Content-Type', /json/)
         .expect(200)
         .end(function(err, res) {
+          if (err)
+            return done(err);
           var result = JSON.parse(res.text);
           assert.equal(result._id, id);
           assert.equal(recipe.title, result.title);
@@ -101,6 +105,8 @@ describe('Recipe API', function() {
         .expect('Content-Type', /json/)
         .expect(201)
         .end(function(err, res) {
+          if (err)
+            return done(err);
           var result = JSON.parse(res.text);
           assert.equal(recipe.title, result.title);
           assert.equal(recipe.description, result.description);
